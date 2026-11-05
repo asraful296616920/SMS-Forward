@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexForward Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMS-Forward</title>
 
 <style>
 * {
@@ -13,201 +13,281 @@
 }
 
 body {
-  background: #0b1020;
-  color: #f1f5f9;
+  background: #303030;
+  color: #eee;
   font-family: Arial, sans-serif;
-  padding: 22px;
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 480px;
-  margin: auto;
-}
-
-.header {
+.topbar {
+  height: 48px;
+  background: #3549a5;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  padding: 0 15px;
+  gap: 17px;
+  box-shadow: 0 2px 5px #111;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #60a5fa;
+.menu {
+  font-size: 21px;
+  cursor: pointer;
 }
 
-.status {
-  background: #123c2b;
-  color: #4ade80;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 12px;
+.topbar-title {
+  font-size: 15px;
+  flex: 1;
 }
 
-.card {
-  background: #151d31;
-  border: 1px solid #25314a;
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 16px;
+.warning {
+  color: #ffdb36;
+  font-size: 19px;
 }
 
-.card h3 {
-  margin-bottom: 15px;
+.account {
+  height: 49px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 12px;
+  border-bottom: 1px solid #454545;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ec3e91;
+}
+
+.account-name {
+  flex: 1;
+  font-size: 13px;
+}
+
+.small-btn {
+  border: 0;
+  background: #424242;
+  color: white;
+  width: 29px;
+  height: 29px;
+  border-radius: 3px;
   font-size: 17px;
 }
 
-.subtitle {
-  color: #94a3b8;
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 57px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(transparent, #303030 35%);
+}
+
+.status {
+  background: #4057bd;
+  color: white;
+  border: none;
+  padding: 10px 17px;
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.add {
+  position: absolute;
+  right: 13%;
+  width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 50%;
+  background: #ec3e91;
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 2px 6px #111;
+  cursor: pointer;
+}
+
+.page {
+  display: none;
+  padding: 15px;
+}
+
+.page.show {
+  display: block;
+}
+
+.field {
+  margin-bottom: 22px;
   font-size: 13px;
-  margin-top: 7px;
 }
 
-.main-status {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 12px 0;
+.field label {
+  display: block;
+  margin-bottom: 10px;
 }
 
-.switch-row {
+.field input[type=text] {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  color: white;
+  outline: none;
+}
+
+.option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 13px 0;
-  border-bottom: 1px solid #29344a;
+  gap: 10px;
+  margin: 13px 0;
+  font-size: 13px;
 }
 
-.switch-row:last-child {
-  border: none;
+input[type=checkbox] {
+  accent-color: #ec3e91;
+  width: 16px;
+  height: 16px;
 }
 
-.switch {
-  width: 48px;
-  height: 26px;
-  background: #475569;
-  border-radius: 20px;
-  position: relative;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.switch::after {
-  content: "";
-  width: 20px;
-  height: 20px;
-  background: white;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  border-radius: 50%;
-  transition: .2s;
-}
-
-.switch.active {
-  background: #2563eb;
-}
-
-.switch.active::after {
-  left: 25px;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #2563eb;
+select {
+  background: #414141;
   color: white;
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 10px;
+  border: 0;
+  padding: 9px;
+  width: 100%;
 }
 
-.footer {
-  text-align: center;
-  color: #64748b;
-  font-size: 12px;
-  margin-top: 25px;
+.actions {
+  position: fixed;
+  bottom: 60px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
 }
+
+.actions button {
+  flex: 1;
+  padding: 10px;
+  border: 0;
+  background: #555;
+  color: white;
+}
+
+.actions .next {
+  background: #4057bd;
+}
+
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <div class="header">
-    <div class="logo">NexForward</div>
-    <div class="status">● Dashboard</div>
+<header class="topbar">
+  <span class="menu" onclick="showHome()">☰</span>
+  <span class="topbar-title" id="title">Filters</span>
+  <span class="warning">▲</span>
+</header>
+
+<!-- Main screen -->
+<main id="home">
+
+  <div class="account">
+    <span class="dot"></span>
+    <span class="account-name">SMS-Forward</span>
+    <button class="small-btn" onclick="showSettings()">⚙</button>
+    <button class="small-btn" onclick="deleteAccount()">▣</button>
   </div>
 
-  <div class="card">
-    <h3>Device Overview</h3>
-    <div class="main-status" id="mainStatus">Disabled</div>
-    <p class="subtitle">Remote control demonstration</p>
+</main>
+
+<!-- Settings screen -->
+<section id="settings" class="page">
+
+  <div class="field">
+    <label>Account name</label>
+    <input type="text" value="SMS-Forward">
   </div>
 
-  <div class="card">
-    <h3>Control Settings</h3>
+  <div class="field">
+    <label>Notification preferences</label>
 
-    <div class="switch-row">
-      <span>Service Status</span>
-      <div class="switch" data-id="service"></div>
+    <div class="option">
+      <input type="checkbox" checked>
+      <span>General notifications</span>
     </div>
 
-    <div class="switch-row">
-      <span>Notification Service</span>
-      <div class="switch" data-id="notification"></div>
+    <div class="option">
+      <input type="checkbox" checked>
+      <span>Connection alerts</span>
     </div>
 
-    <div class="switch-row">
-      <span>Activity Monitoring</span>
-      <div class="switch" data-id="monitor"></div>
+    <div class="option">
+      <input type="checkbox">
+      <span>Error alerts</span>
     </div>
   </div>
 
-  <div class="card">
-    <h3>Connection</h3>
-    <p class="subtitle" id="connection">
-      Dashboard Demo Mode
-    </p>
-    <button onclick="resetSettings()">Reset Settings</button>
+  <div class="field">
+    <label>Connection status</label>
+    <select>
+      <option>Local demo mode</option>
+      <option>Disconnected</option>
+    </select>
   </div>
 
-  <div class="footer">
-    NexForward • Version 1.0.0
-    <br><br>
-    Secure Control Dashboard
+  <div class="actions">
+    <button onclick="showHome()">CANCEL</button>
+    <button class="next" onclick="saveSettings()">SAVE</button>
   </div>
 
-</div>
+</section>
+
+<footer class="bottom">
+  <button class="status" onclick="toggleStatus()">
+    <span id="statusText">Service inactive</span> ▼
+  </button>
+
+  <button class="add" onclick="showSettings()">+</button>
+</footer>
 
 <script>
-const switches = document.querySelectorAll(".switch");
+let active = false;
 
-switches.forEach(sw => {
-  sw.addEventListener("click", () => {
-    sw.classList.toggle("active");
-    updateStatus();
-  });
-});
-
-function updateStatus() {
-  const service = document.querySelector(
-    '[data-id="service"]'
-  ).classList.contains("active");
-
-  document.getElementById("mainStatus").textContent =
-    service ? "Enabled" : "Disabled";
+function showSettings() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("settings").classList.add("show");
+  document.getElementById("title").textContent = "Main settings";
 }
 
-function resetSettings() {
-  switches.forEach(sw => {
-    sw.classList.remove("active");
-  });
+function showHome() {
+  document.getElementById("home").style.display = "block";
+  document.getElementById("settings").classList.remove("show");
+  document.getElementById("title").textContent = "Filters";
+}
 
-  updateStatus();
+function toggleStatus() {
+  active = !active;
+  document.getElementById("statusText").textContent =
+    active ? "Service enabled" : "Service inactive";
+}
+
+function saveSettings() {
+  alert("Settings saved in demo mode.");
+  showHome();
+}
+
+function deleteAccount() {
+  if (confirm("Remove this demo account?")) {
+    document.querySelector(".account").style.display = "none";
+  }
 }
 </script>
+
 </body>
 </html>
