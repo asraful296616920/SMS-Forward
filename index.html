@@ -7,72 +7,130 @@
 
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background: #303030;
-  color: #eee;
+  color: #c8c8c8;
   font-family: Arial, sans-serif;
-  min-height: 100vh;
+  font-size: 12px;
 }
 
-.topbar {
-  height: 48px;
+.header {
+  height: 42px;
   background: #3549a5;
   display: flex;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 10px;
   gap: 17px;
-  box-shadow: 0 2px 5px #111;
+  color: white;
+  border-bottom: 1px solid #6476c5;
 }
 
-.menu {
-  font-size: 21px;
-  cursor: pointer;
+.header .menu {
+  font-size: 17px;
 }
 
-.topbar-title {
-  font-size: 15px;
+.header .title {
+  font-size: 13px;
   flex: 1;
 }
 
 .warning {
-  color: #ffdb36;
-  font-size: 19px;
+  color: #ffd42a;
+  font-size: 16px;
 }
 
 .account {
-  height: 49px;
+  height: 42px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
-  gap: 12px;
-  border-bottom: 1px solid #454545;
+  padding: 0 9px;
+  gap: 10px;
+  color: #ddd;
 }
 
-.dot {
-  width: 13px;
-  height: 13px;
+.pink-dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #ec3e91;
+  background: #ec368b;
 }
 
 .account-name {
   flex: 1;
-  font-size: 13px;
+  font-size: 12px;
 }
 
-.small-btn {
+.icon-btn {
   border: 0;
   background: #424242;
-  color: white;
-  width: 29px;
-  height: 29px;
-  border-radius: 3px;
-  font-size: 17px;
+  color: #eee;
+  height: 27px;
+  width: 27px;
+  font-size: 15px;
+}
+
+.settings {
+  display: none;
+  padding: 10px 8px 75px;
+}
+
+.settings.show {
+  display: block;
+}
+
+.input-name {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #999;
+  color: #ddd;
+  outline: none;
+  padding: 5px 0;
+  font-size: 12px;
+  margin-bottom: 19px;
+}
+
+.section-title {
+  font-size: 11px;
+  color: #bdbdbd;
+  margin: 13px 0 8px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  min-height: 27px;
+  gap: 7px;
+  color: #bdbdbd;
+  font-size: 11px;
+}
+
+.option input {
+  width: 14px;
+  height: 14px;
+  accent-color: #ed398e;
+}
+
+.select-row {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #c3c3c3;
+}
+
+.select-row select {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  outline: none;
+  font-size: 11px;
 }
 
 .bottom {
@@ -80,211 +138,204 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 57px;
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(transparent, #303030 35%);
+  background: #303030;
 }
 
-.status {
-  background: #4057bd;
+.active-btn {
+  background: #4057b7;
   color: white;
   border: none;
-  padding: 10px 17px;
-  border-radius: 16px;
-  font-size: 12px;
-  cursor: pointer;
+  border-radius: 18px;
+  padding: 9px 15px;
+  font-size: 11px;
 }
 
-.add {
+.active-btn.on {
+  background: #4057b7;
+}
+
+.add-btn {
   position: absolute;
-  right: 13%;
-  width: 43px;
-  height: 43px;
-  border: none;
+  right: 12%;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: #ec3e91;
+  background: #ed398e;
   color: white;
-  font-size: 28px;
-  box-shadow: 0 2px 6px #111;
-  cursor: pointer;
-}
-
-.page {
-  display: none;
-  padding: 15px;
-}
-
-.page.show {
-  display: block;
-}
-
-.field {
-  margin-bottom: 22px;
-  font-size: 13px;
-}
-
-.field label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.field input[type=text] {
-  width: 100%;
-  padding: 9px;
-  background: transparent;
   border: none;
-  border-bottom: 1px solid #aaa;
-  color: white;
-  outline: none;
+  font-size: 26px;
 }
 
-.option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 13px 0;
-  font-size: 13px;
-}
-
-input[type=checkbox] {
-  accent-color: #ec3e91;
-  width: 16px;
-  height: 16px;
-}
-
-select {
-  background: #414141;
-  color: white;
-  border: 0;
-  padding: 9px;
-  width: 100%;
-}
-
-.actions {
+.page-actions {
   position: fixed;
-  bottom: 60px;
-  left: 10px;
-  right: 10px;
-  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 49px;
+  display: none;
   gap: 5px;
+  padding: 5px;
+  background: #303030;
 }
 
-.actions button {
+.page-actions.show {
+  display: flex;
+}
+
+.page-actions button {
   flex: 1;
-  padding: 10px;
-  border: 0;
-  background: #555;
+  background: #505050;
   color: white;
+  border: 0;
+  font-size: 11px;
 }
 
-.actions .next {
-  background: #4057bd;
+.page-actions .next {
+  background: #555;
 }
 
+.hidden {
+  display: none !important;
+}
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-  <span class="menu" onclick="showHome()">☰</span>
-  <span class="topbar-title" id="title">Filters</span>
+<header class="header">
+  <span onclick="home()" class="menu">☰</span>
+  <span class="title" id="pageTitle">Filters</span>
   <span class="warning">▲</span>
 </header>
 
-<!-- Main screen -->
-<main id="home">
+<main id="homePage">
 
   <div class="account">
-    <span class="dot"></span>
+    <span class="pink-dot"></span>
     <span class="account-name">SMS-Forward</span>
-    <button class="small-btn" onclick="showSettings()">⚙</button>
-    <button class="small-btn" onclick="deleteAccount()">▣</button>
+    <button class="icon-btn" onclick="openSettings()">⚙</button>
+    <button class="icon-btn" onclick="removeAccount()">▣</button>
   </div>
 
 </main>
 
-<!-- Settings screen -->
-<section id="settings" class="page">
+<section class="settings" id="settingsPage">
 
-  <div class="field">
-    <label>Account name</label>
-    <input type="text" value="SMS-Forward">
-  </div>
+  <input
+    class="input-name"
+    type="text"
+    value="SMS-Forward"
+    placeholder="Account name"
+  >
 
-  <div class="field">
-    <label>Notification preferences</label>
+  <div class="section-title">Notification Preferences</div>
 
-    <div class="option">
-      <input type="checkbox" checked>
-      <span>General notifications</span>
-    </div>
+  <label class="option">
+    <input type="checkbox" checked>
+    General notifications
+  </label>
 
-    <div class="option">
-      <input type="checkbox" checked>
-      <span>Connection alerts</span>
-    </div>
+  <label class="option">
+    <input type="checkbox" checked>
+    Connection alerts
+  </label>
 
-    <div class="option">
-      <input type="checkbox">
-      <span>Error alerts</span>
-    </div>
-  </div>
+  <label class="option">
+    <input type="checkbox">
+    Error notifications
+  </label>
 
-  <div class="field">
-    <label>Connection status</label>
+  <div class="section-title">Message Filters</div>
+
+  <label class="option">
+    <input type="checkbox" checked>
+    Exclude OTP messages
+  </label>
+
+  <label class="option">
+    <input type="checkbox" checked>
+    Exclude banking messages
+  </label>
+
+  <div class="section-title">Connection Settings</div>
+
+  <div class="select-row">
+    <span>Connection mode</span>
     <select>
-      <option>Local demo mode</option>
+      <option>Demo mode</option>
       <option>Disconnected</option>
     </select>
   </div>
 
-  <div class="actions">
-    <button onclick="showHome()">CANCEL</button>
-    <button class="next" onclick="saveSettings()">SAVE</button>
-  </div>
+  <div class="section-title">Service Settings</div>
+
+  <label class="option">
+    <input type="checkbox" checked>
+    Show connection status
+  </label>
 
 </section>
 
-<footer class="bottom">
-  <button class="status" onclick="toggleStatus()">
-    <span id="statusText">Service inactive</span> ▼
+<footer class="bottom" id="homeBottom">
+  <button class="active-btn" id="activeButton"
+    onclick="toggleService()">
+    Forwarding inactive ▼
   </button>
 
-  <button class="add" onclick="showSettings()">+</button>
+  <button class="add-btn" onclick="openSettings()">+</button>
 </footer>
 
+<div class="page-actions" id="settingsActions">
+  <button onclick="home()">‹ CANCEL</button>
+  <button class="next" onclick="saveSettings()">SAVE ›</button>
+</div>
+
 <script>
-let active = false;
+let serviceActive = false;
 
-function showSettings() {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("settings").classList.add("show");
-  document.getElementById("title").textContent = "Main settings";
+function openSettings() {
+  document.getElementById("homePage").classList.add("hidden");
+  document.getElementById("homeBottom").classList.add("hidden");
+
+  document.getElementById("settingsPage").classList.add("show");
+  document.getElementById("settingsActions").classList.add("show");
+
+  document.getElementById("pageTitle").textContent =
+    "Main settings (1/1)";
 }
 
-function showHome() {
-  document.getElementById("home").style.display = "block";
-  document.getElementById("settings").classList.remove("show");
-  document.getElementById("title").textContent = "Filters";
+function home() {
+  document.getElementById("homePage").classList.remove("hidden");
+  document.getElementById("homeBottom").classList.remove("hidden");
+
+  document.getElementById("settingsPage").classList.remove("show");
+  document.getElementById("settingsActions").classList.remove("show");
+
+  document.getElementById("pageTitle").textContent = "Filters";
 }
 
-function toggleStatus() {
-  active = !active;
-  document.getElementById("statusText").textContent =
-    active ? "Service enabled" : "Service inactive";
+function toggleService() {
+  serviceActive = !serviceActive;
+
+  const button = document.getElementById("activeButton");
+
+  button.textContent = serviceActive
+    ? "Forwarding active ▼"
+    : "Forwarding inactive ▼";
 }
 
 function saveSettings() {
   alert("Settings saved in demo mode.");
-  showHome();
+  home();
 }
 
-function deleteAccount() {
-  if (confirm("Remove this demo account?")) {
-    document.querySelector(".account").style.display = "none";
+function removeAccount() {
+  if (confirm("Remove this demo profile?")) {
+    document.querySelector(".account").classList.add("hidden");
   }
 }
 </script>
